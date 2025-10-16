@@ -1,0 +1,26 @@
+.targeta-producte{
+  width: 300px;
+  border: 1px solid;
+  padding: 1.5rem;
+  .titol{
+    color: darkblue;
+    font-size: 1.5rem;
+  }
+  .descripcio{
+    color: grey;
+    font-size: 1rem;
+  }
+  .preu{
+    font-weight: bold;
+    color: green;
+    font-size: 2rem;
+  }
+  .boto-compra{
+    background-color: blue;
+    color: white;
+    padding: 1rem 1.5rem;
+  }
+  .boto-compra:hover{
+    background-color: darkblue;
+  }
+}

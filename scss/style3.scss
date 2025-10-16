@@ -1,0 +1,32 @@
+.formulari{
+  width: 36rem;
+  margin: auto;
+  padding: 2rem;
+  .camp{
+    margin-bottom: 1rem;
+    label{
+      font-weight: bold;
+    }
+    input,textarea{
+      width: 100%;
+      padding: 1rem;
+      border: 1px black solid;
+      font-size: 1rem;
+      field-sizing: content;
+      &:focus{
+        outline: none;
+        border: 2px solid blue;
+      }
+    }
+  }
+  .boto-enviar{
+    padding: 1rem;
+    background-color: green;
+    font-size: 1rem;
+    width: 100%;
+    color: white;
+  }
+  .boto-enviar:hover{
+    background-color: darkgreen;
+  }
+}
