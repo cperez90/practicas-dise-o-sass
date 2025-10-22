@@ -1,24 +1,65 @@
+$gruix-border: 1px solid;
+
+$verd-fluix: #eef9ef;
+$blau-fluix: #e9f2ff;
+$groc-fluix: #fff6d6;
+$blau: #2f78d6;
+$gris-fosc: #333333;
+$gris-clar: #9aa0a6;
+$groc-clar: lightyellow;
+$gris-oscur: darkgrey;
+$blau-oscur: darkblue;
+$verd-oscur: darkgreen;
+$gris: grey;
+$verd: green;
+$blau: blue;
+$blanc: white;
+$negre: black;
+$darkkhaki: darkkhaki;
+
+$size-0-2: 0.2rem;
+$size-0-25: 0.25rem;
+$size-0-3: 0.3rem;
+$size-0-5: 0.5rem;
+$size-0-625: 0.625rem;
+$size-0-75: 0.75rem;
+$size-0-9375: 0.9375rem;
+$size-1: 1rem;
+$size-1-5: 1.5rem;
+$size-2: 2rem;
+$size-2-5: 2.5rem;
+$size-4: 4rem;
+$size-7-5: 7.5rem;
+$size-18: 18rem;
+$size-36: 36rem;
+
+$size-18px: 18px;
+$size-300px: 300px;
+
+$shadow-0-4-8: 0 4px 8px rgba(0,0,0,0.1);
+$shadow-0-8-20: 0 8px 20px rgba(0,0,0,0.08);
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
-  padding: 0 2.5rem;
-  background-color: lightyellow;
+  height: $size-4;
+  padding: 0 $size-2-5;
+  background-color: $groc-clar;
 }
 
 .logo img {
-  height: 2.5rem;
+  height: $size-2-5;
   display: block;
 }
 
 .navegacio {
   display: flex;
-  gap: 0.3rem;
+  gap: $size-0-3;
   .enllaç {
     position: relative;
-    padding: 0.625rem 0.9375rem;
-    color: darkgrey;
+    padding: $size-0-625 $size-0-9375;
+    color: $gris-oscur;
     text-decoration: none;
     transition: color 0.3s ease;
 
@@ -28,15 +69,15 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 0.2rem;
-      background-color: blue;
+      height: $size-0-2;
+      background-color: $blau;
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.3s ease;
     }
 
     &:hover {
-      color: blue;
+      color: $blau;
 
       &::after {
         transform: scaleX(1);
@@ -44,7 +85,7 @@
     }
 
     &.actiu {
-      color: blue;
+      color: $blau;
       font-weight: bold;
 
       &::after {
@@ -54,54 +95,133 @@
   }
 }
 
-.galeria{
+.galeria {
   display: flex;
-  gap: 1rem;
-  padding: 2rem;
+  gap: $size-1;
+  padding: $size-2;
   justify-content: center;
 
-  .galeria-item{
+  .galeria-item {
     width: 33%;
-    overflow: hidden;
+
+    .imatge-container {
+      overflow: hidden;
+      box-shadow: $shadow-0-4-8;
+      transition: box-shadow 0.3s ease;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+
+      img {
+        transform: scale(1.1);
+      }
+    }
   }
 
-  .imatge-container{
-    justify-content: space-evenly;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-
-  img{
-    width: 100%;
-    display: block;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  img:hover{
-    transform: scale(1.1);
-  }
-
-  .titol{
+  .titol {
     text-align: center;
-    margin-top: 1rem;
-    color: darkkhaki;
-    font-size: 18px;
+    margin-top: $size-1;
+    color: $darkkhaki;
+    font-size: $size-18px;
+  }
+}
+
+.equip {
+  display: flex;
+  gap: $size-1-5;
+  padding: $size-2-5;
+  justify-content: center;
+  background-color: $verd-fluix;
+}
+
+.membre-card {
+  width: $size-18;
+  background-color: $blau-fluix;
+  border-radius: $size-0-25;
+  padding: $size-1-5;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: $shadow-0-8-20;
+  }
+
+  .avatar {
+    width: $size-7-5;
+    height: $size-7-5;
+    margin-bottom: $size-1;
+    border: $size-0-25 solid $blau;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nom {
+    color: $gris-fosc;
+    font-size: $size-1-5;
+    font-weight: bold;
+    margin-bottom: $size-0-5;
+  }
+
+  .carrec {
+    color: $gris-clar;
+    font-size: $size-1;
+    margin-bottom: $size-1;
+  }
+
+  .xarxes {
+    display: flex;
+    justify-content: center;
+    gap: $size-0-75;
+  }
+
+  .xarxa-enllaç {
+    display: inline-block;
+    width: $size-2-5;
+    height: $size-2-5;
+    border-radius: 50%;
+    background-color: $groc-fluix;
+    color: $gris-clar;
+    line-height: $size-2-5;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: $blau;
+      color: $blanc;
+      transform: translateY(-2px);
+    }
   }
 }
 
 .formulari{
-  width: 36rem;
+  width: $size-36;
   margin: auto;
-  padding: 2rem;
+  padding: $size-2;
   .camp{
-    margin-bottom: 1rem;
+    margin-bottom: $size-1;
     label{
       font-weight: bold;
     }
     input,textarea{
       width: 100%;
-      padding: 1rem;
-      border: 1px black solid;
-      font-size: 1rem;
+      padding: $size-1;
+      border: 1px $negre solid;
+      font-size: $size-1;
       field-sizing: content;
       &:focus{
         outline: none;
@@ -110,40 +230,41 @@
     }
   }
   .boto-enviar{
-    padding: 1rem;
-    background-color: green;
-    font-size: 1rem;
+    padding: $size-1;
+    background-color: $verd;
+    font-size: $size-1;
     width: 100%;
-    color: white;
+    color: $blanc;
   }
   .boto-enviar:hover{
-    background-color: darkgreen;
+    background-color: $verd-oscur;
   }
 }
 
 .targeta-producte{
-  width: 300px;
-  border: 1px solid;
-  padding: 1.5rem;
+  width: $size-300px;
+  border: $gruix-border;
+  padding: $size-1-5;
+
   .titol{
-    color: darkblue;
-    font-size: 1.5rem;
+    color: $blau-oscur;
+    font-size: $size-1-5;
   }
   .descripcio{
-    color: grey;
-    font-size: 1rem;
+    color: $gris;
+    font-size: $size-1;
   }
   .preu{
     font-weight: bold;
-    color: green;
-    font-size: 2rem;
+    color: $verd;
+    font-size: $size-2;
   }
   .boto-compra{
-    background-color: blue;
-    color: white;
-    padding: 1rem 1.5rem;
+    background-color: $blau;
+    color: $blanc;
+    padding: $size-1 $size-1-5;
   }
   .boto-compra:hover{
-    background-color: darkblue;
+    background-color: $blau-oscur;
   }
 }

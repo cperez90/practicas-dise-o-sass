@@ -15,7 +15,7 @@ $size-0-25: 0.25rem;
 $size-0-5: 0.5rem;
 $size-0-75: 0.75rem;
 
-$shadow: 0 8px 20px rgba(0,0,0,0.08);
+$shadow-0-8-20: 0 8px 20px rgba(0,0,0,0.08);
 
 .equip {
   display: flex;
@@ -37,7 +37,7 @@ $shadow: 0 8px 20px rgba(0,0,0,0.08);
 
   &:hover {
     transform: translateY(-0.5rem);
-    box-shadow: $shadow;
+    box-shadow: $shadow-0-8-20;
   }
 
   .avatar {

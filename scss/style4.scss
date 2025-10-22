@@ -4,6 +4,8 @@ $size-18px: 18px;
 
 $darkkhaki: darkkhaki;
 
+$shadow-0-4-8: 0 4px 8px rgba(0,0,0,0.1);
+
 .galeria {
   display: flex;
   gap: $size-1;
@@ -15,7 +17,7 @@ $darkkhaki: darkkhaki;
 
     .imatge-container {
       overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      box-shadow: $shadow-0-4-8;
       transition: box-shadow 0.3s ease;
     }
 
