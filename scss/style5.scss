@@ -1,24 +1,35 @@
+$size-4: 4rem;
+$size-2-5: 2.5rem;
+$size-0-625: 0.625rem;
+$size-0-9375: 0.9375rem;
+$size-0-2: 0.2rem;
+$size-0-3: 0.3rem;
+
+$groc-clar: lightyellow;
+$gris-oscur: darkgrey;
+$blau: blue;
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
-  padding: 0 2.5rem;
-  background-color: lightyellow;
+  height: $size-4;
+  padding: 0 $size-2-5;
+  background-color: $groc-clar;
 }
 
 .logo img {
-  height: 2.5rem;
+  height: $size-2-5;
   display: block;
 }
 
 .navegacio {
   display: flex;
-  gap: 0.3rem;
+  gap: $size-0-3;
   .enllaç {
     position: relative;
-    padding: 0.625rem 0.9375rem;
-    color: darkgrey;
+    padding: $size-0-625 $size-0-9375;
+    color: $gris-oscur;
     text-decoration: none;
     transition: color 0.3s ease;
 
@@ -28,7 +39,7 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 0.2rem;
+      height: $size-0-2;
       background-color: blue;
       transform: scaleX(0);
       transform-origin: left;
@@ -36,7 +47,7 @@
     }
 
     &:hover {
-      color: blue;
+      color: $blau;
 
       &::after {
         transform: scaleX(1);
@@ -44,7 +55,7 @@
     }
 
     &.actiu {
-      color: blue;
+      color: $blau;
       font-weight: bold;
 
       &::after {

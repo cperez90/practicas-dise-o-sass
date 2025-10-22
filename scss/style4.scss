@@ -1,7 +1,13 @@
+$size-2: 2rem;
+$size-1: 1rem;
+$size-18px: 18px;
+
+$darkkhaki: darkkhaki;
+
 .galeria {
   display: flex;
-  gap: 1rem;
-  padding: 2rem;
+  gap: $size-1;
+  padding: $size-2;
   justify-content: center;
 
   .galeria-item {
@@ -30,8 +36,8 @@
 
   .titol {
     text-align: center;
-    margin-top: 1rem;
-    color: darkkhaki;
-    font-size: 18px;
+    margin-top: $size-1;
+    color: $darkkhaki;
+    font-size: $size-18px;
   }
 }

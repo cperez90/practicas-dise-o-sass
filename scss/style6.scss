@@ -4,20 +4,32 @@ $groc-fluix: #fff6d6;
 $blau: #2f78d6;
 $gris-fosc: #333333;
 $gris-clar: #9aa0a6;
+$blanc: white;
+
+$size-1: 1rem;
+$size-1-5: 1.5rem;
+$size-2-5: 2.5rem;
+$size-18: 18rem;
+$size-7-5: 7.5rem;
+$size-0-25: 0.25rem;
+$size-0-5: 0.5rem;
+$size-0-75: 0.75rem;
+
+$shadow: 0 8px 20px rgba(0,0,0,0.08);
 
 .equip {
   display: flex;
-  gap: 1.5rem;
-  padding: 2.5rem;
+  gap: $size-1-5;
+  padding: $size-2-5;
   justify-content: center;
   background-color: $verd-fluix;
 }
 
 .membre-card {
-  width: 18rem;
+  width: $size-18;
   background-color: $blau-fluix;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
+  border-radius: $size-0-25;
+  padding: $size-1-5;
   text-align: center;
   box-sizing: border-box;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -25,14 +37,14 @@ $gris-clar: #9aa0a6;
 
   &:hover {
     transform: translateY(-0.5rem);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: $shadow;
   }
 
   .avatar {
-    width: 7.5rem;
-    height: 7.5rem;
-    margin-bottom: 1rem;
-    border: 0.25rem solid $blau;
+    width: $size-7-5;
+    height: $size-7-5;
+    margin-bottom: $size-1;
+    border: $size-0-25 solid $blau;
     object-fit: cover;
     display: block;
     margin-left: auto;
@@ -41,31 +53,31 @@ $gris-clar: #9aa0a6;
 
   .nom {
     color: $gris-fosc;
-    font-size: 1.5rem;
+    font-size: $size-1-5;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: $size-0-5;
   }
 
   .carrec {
     color: $gris-clar;
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: $size-1;
+    margin-bottom: $size-1;
   }
 
   .xarxes {
     display: flex;
     justify-content: center;
-    gap: 0.75rem;
+    gap: $size-0-75;
   }
 
   .xarxa-enllaç {
     display: inline-block;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: $size-2-5;
+    height: $size-2-5;
     border-radius: 50%;
     background-color: $groc-fluix;
     color: $gris-clar;
-    line-height: 2.5rem;
+    line-height: $size-2-5;
     text-align: center;
     transition: all 0.3s ease;
     text-decoration: none;
@@ -74,7 +86,7 @@ $gris-clar: #9aa0a6;
 
     &:hover {
       background-color: $blau;
-      color: white;
+      color: $blanc;
       transform: translateY(-2px);
     }
   }

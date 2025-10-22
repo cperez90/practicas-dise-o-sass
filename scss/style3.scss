@@ -1,17 +1,27 @@
+$size-36: 36rem;
+$size-2: 2rem;
+$size-1: 1rem;
+
+$negre: black;
+$blau: blue;
+$verd: green;
+$verd-oscur: darkgreen;
+$blanc: white;
+
 .formulari{
-  width: 36rem;
+  width: $size-36;
   margin: auto;
-  padding: 2rem;
+  padding: $size-2;
   .camp{
-    margin-bottom: 1rem;
+    margin-bottom: $size-1;
     label{
       font-weight: bold;
     }
     input,textarea{
       width: 100%;
-      padding: 1rem;
-      border: 1px black solid;
-      font-size: 1rem;
+      padding: $size-1;
+      border: 1px $negre solid;
+      font-size: $size-1;
       field-sizing: content;
       &:focus{
         outline: none;
@@ -20,13 +30,13 @@
     }
   }
   .boto-enviar{
-    padding: 1rem;
-    background-color: green;
-    font-size: 1rem;
+    padding: $size-1;
+    background-color: $verd;
+    font-size: $size-1;
     width: 100%;
-    color: white;
+    color: $blanc;
   }
   .boto-enviar:hover{
-    background-color: darkgreen;
+    background-color: $verd-oscur;
   }
 }

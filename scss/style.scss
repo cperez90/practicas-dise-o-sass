@@ -1,26 +1,40 @@
+$size-300px: 300px;
+$gruix-border: 1px solid;
+
+$blau-oscur: darkblue;
+$gris: grey;
+$verd: green;
+$blau: blue;
+$blanc: white;
+
+$size-1-5: 1.5rem;
+$size-1: 1rem;
+$size-2: 2rem;
+
 .targeta-producte{
-  width: 300px;
-  border: 1px solid;
-  padding: 1.5rem;
+  width: $size-300px;
+  border: $gruix-border;
+  padding: $size-1-5;
+
   .titol{
-    color: darkblue;
-    font-size: 1.5rem;
+    color: $blau-oscur;
+    font-size: $size-1-5;
   }
   .descripcio{
-    color: grey;
-    font-size: 1rem;
+    color: $gris;
+    font-size: $size-1;
   }
   .preu{
     font-weight: bold;
-    color: green;
-    font-size: 2rem;
+    color: $verd;
+    font-size: $size-2;
   }
   .boto-compra{
-    background-color: blue;
-    color: white;
-    padding: 1rem 1.5rem;
+    background-color: $blau;
+    color: $blanc;
+    padding: $size-1 $size-1-5;
   }
   .boto-compra:hover{
-    background-color: darkblue;
+    background-color: $blau-oscur;
   }
 }
