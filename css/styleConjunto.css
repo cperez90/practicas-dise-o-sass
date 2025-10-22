@@ -1,0 +1,96 @@
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.galeria {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+  justify-content: center;
+}
+.galeria .galeria-item {
+  width: 33%;
+  overflow: hidden;
+}
+.galeria .imatge-container {
+  justify-content: space-evenly;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.galeria img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.galeria img:hover {
+  transform: scale(1.1);
+}
+.galeria .titol {
+  text-align: center;
+  margin-top: 1rem;
+  color: darkkhaki;
+  font-size: 18px;
+}
+
+.formulari {
+  width: 36rem;
+  margin: auto;
+  padding: 2rem;
+}
+.formulari .camp {
+  margin-bottom: 1rem;
+}
+.formulari .camp label {
+  font-weight: bold;
+}
+.formulari .camp input, .formulari .camp textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px black solid;
+  font-size: 1rem;
+  field-sizing: content;
+}
+.formulari .camp input:focus, .formulari .camp textarea:focus {
+  outline: none;
+  border: 2px solid blue;
+}
+.formulari .boto-enviar {
+  padding: 1rem;
+  background-color: green;
+  font-size: 1rem;
+  width: 100%;
+  color: white;
+}
+.formulari .boto-enviar:hover {
+  background-color: darkgreen;
+}
+
+.targeta-producte {
+  width: 300px;
+  border: 1px solid;
+  padding: 1.5rem;
+}
+.targeta-producte .titol {
+  color: darkblue;
+  font-size: 1.5rem;
+}
+.targeta-producte .descripcio {
+  color: grey;
+  font-size: 1rem;
+}
+.targeta-producte .preu {
+  font-weight: bold;
+  color: green;
+  font-size: 2rem;
+}
+.targeta-producte .boto-compra {
+  background-color: blue;
+  color: white;
+  padding: 1rem 1.5rem;
+}
+.targeta-producte .boto-compra:hover {
+  background-color: darkblue;
+}
+
+/*# sourceMappingURL=styleConjunto.css.map */
