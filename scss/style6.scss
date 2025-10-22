@@ -1,0 +1,83 @@
+$verd-fluix: #eef9ef;
+$blau-fluix: #e9f2ff;
+$groc-fluix: #fff6d6;
+$blau: #2f78d6;
+$gris-fosc: #333333;
+$gris-clar: #9aa0a6;
+
+.equip {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2.5rem;
+  justify-content: center;
+  background-color: $verd-fluix;
+}
+
+.membre-card {
+  width: 18rem;
+  background-color: $blau-fluix;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-sizing: border-box;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .avatar {
+    width: 7.5rem;
+    height: 7.5rem;
+    margin-bottom: 1rem;
+    border: 0.25rem solid $blau;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nom {
+    color: $gris-fosc;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .carrec {
+    color: $gris-clar;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .xarxes {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .xarxa-enllaç {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: $groc-fluix;
+    color: $gris-clar;
+    line-height: 2.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-weight: 600;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: $blau;
+      color: white;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+
