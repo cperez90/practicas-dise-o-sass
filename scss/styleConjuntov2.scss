@@ -55,8 +55,13 @@ $marge-xlarge: 4rem;
 $size-18px: 18px;
 $size-300px: 300px;
 
-$shadow-0-4-8: 0 4px 8px rgba(0,0,0,0.1);
-$shadow-0-8-20: 0 8px 20px rgba(0,0,0,0.08);
+$shadow-sm: 0 4px 8px rgba(0,0,0,0.1);
+$shadow-base: 0 8px 20px rgba(0,0,0,0.08);
+$shadow-md: 0 10px 25px;
+
+$transition-base: 0.3s ease;
+$transition-fast: 0.25s ease;
+
 
 @function px-a-rem($px) {
   @return calc($px / 16) * 1rem;
@@ -92,7 +97,7 @@ $shadow-0-8-20: 0 8px 20px rgba(0,0,0,0.08);
     padding: $size-0-625 $size-0-9375;
     color: $gris-oscur;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color $transition-base;
 
     &::after {
       content: "";
@@ -104,7 +109,7 @@ $shadow-0-8-20: 0 8px 20px rgba(0,0,0,0.08);
       background-color: $blau;
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.3s ease;
+      transition: transform $transition-base;
     }
 
     &:hover {
@@ -137,14 +142,14 @@ $shadow-0-8-20: 0 8px 20px rgba(0,0,0,0.08);
 
     .imatge-container {
       overflow: hidden;
-      box-shadow: $shadow-0-4-8;
-      transition: box-shadow 0.3s ease;
+      box-shadow: $shadow-sm;
+      transition: box-shadow $transition-base;
     }
 
     img {
       width: 100%;
       display: block;
-      transition: transform 0.3s ease;
+      transition: transform $transition-base;
     }
 
     &:hover {
@@ -179,12 +184,12 @@ $shadow-0-8-20: 0 8px 20px rgba(0,0,0,0.08);
   padding: $size-1-5;
   text-align: center;
   box-sizing: border-box;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform $transition-fast, box-shadow $transition-fast;
   will-change: transform;
 
   &:hover {
     transform: translateY(-0.5rem);
-    box-shadow: $shadow-0-8-20;
+    box-shadow: $shadow-base;
   }
 
   .avatar {
@@ -226,7 +231,7 @@ $shadow-0-8-20: 0 8px 20px rgba(0,0,0,0.08);
     color: $gris-clar;
     line-height: $size-2-5;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all $transition-base;
     text-decoration: none;
     font-weight: 600;
     box-sizing: border-box;
@@ -251,7 +256,7 @@ $shadow-0-8-20: 0 8px 20px rgba(0,0,0,0.08);
     input,textarea{
       width: 100%;
       padding: $size-1;
-      border: 1px $negre solid;
+      border:  $gruix-border $negre;
       font-size: $size-1;
       field-sizing: content;
       &:focus{
