@@ -90,15 +90,29 @@ $transition-fast: 0.25s ease;
   @else if $type == hover { box-shadow: $shadow-hover; }
 }
 
-@mixin boto($bg-color, $text-color: $blanc, $padding-y: $size-1, $padding-x: $size-1-5) {
-  background-color: $bg-color;
-  color: $text-color;
-  padding: $padding-y $padding-x;
-  border: none;
-  border-radius: $border-radius-small;
-  font-weight: 600;
-  cursor: pointer;
-  @include transition-base(background-color);
+@mixin boto($variant: "primary", $size: "medium", $full-width: false) {
+  @if $variant == "primary" {
+    $bg-color: $blau;
+    $text-color: $blanc;
+    $border-color: transparent;
+  } @else if $variant == "secondary" {
+    $bg-color: $gris-clar;
+    $text-color: $negre;
+    $border-color: transparent;
+  } @else if $variant == "accent" {
+    $bg-color: $verd;
+    $text-color: $blanc;
+    $border-color: transparent;
+  } @else if $variant == "outline" {
+    $bg-color: transparent;
+    $text-color: $blau;
+    $border-color: $blau;
+  } @else {
+    @warn "Variant #{$variant} no reconeguda. S'utilitza 'primary' per defecte.";
+    $bg-color: $blau;
+    $text-color: $blanc;
+    $border-color: transparent;
+  }
 }
 
 @mixin card-hover {
