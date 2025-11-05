@@ -1,4 +1,8 @@
-$gruix-border: 1px solid;
+$border-width-base: 1px;
+$border-style-base: solid;
+$border-radius-small: 0.25rem;
+$border-radius-base: 0.5rem;
+$border-radius-large: 1rem;
 
 $verd-fluix: #eef9ef;
 $blau-fluix: #e9f2ff;
@@ -57,26 +61,94 @@ $size-300px: 300px;
 
 $shadow-sm: 0 4px 8px rgba(0,0,0,0.1);
 $shadow-base: 0 8px 20px rgba(0,0,0,0.08);
-$shadow-md: 0 10px 25px;
+$shadow-md: 0 10px 25px rgba(0,0,0,0.1);
+$shadow-lg: 0 12px 30px rgba(0,0,0,0.2);
+$shadow-hover: 0 6px 15px rgba(0,0,0,0.15);
+
 
 $transition-base: 0.3s ease;
 $transition-fast: 0.25s ease;
 
+@mixin flex-basic {
+  display: flex;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin transition-base($property: all) {
+  transition: $property $transition-base;
+}
+
+@mixin shadow($type) {
+  @if $type == sm { box-shadow: $shadow-sm; }
+  @else if $type == base { box-shadow: $shadow-base; }
+  @else if $type == md { box-shadow: $shadow-md; }
+  @else if $type == lg { box-shadow: $shadow-lg; }
+  @else if $type == hover { box-shadow: $shadow-hover; }
+}
+
+@mixin boto($bg-color, $text-color: $blanc, $padding-y: $size-1, $padding-x: $size-1-5) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: $padding-y $padding-x;
+  border: none;
+  border-radius: $border-radius-small;
+  font-weight: 600;
+  cursor: pointer;
+  @include transition-base(background-color);
+}
+
+@mixin card-hover {
+  @include transition-base(transform, box-shadow);
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    @include shadow(base);
+  }
+}
+
+@mixin responsive-img {
+  width: 100%;
+  display: block;
+}
+
+@mixin form-input {
+  width: 100%;
+  padding: $size-1;
+  border: $border-width-base $border-style-base $negre;
+  font-size: $font-size-base;
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+    border: 2px solid $blau;
+  }
+}
+
+@mixin titol($font-size: $font-size-large, $color: $gris-fosc) {
+  font-size: $font-size;
+  color: $color;
+  font-weight: bold;
+  margin-bottom: $marge-small;
+}
 
 @function px-a-rem($px) {
   @return calc($px / 16) * 1rem;
 }
 
 .titol {
-   font-size: px-a-rem(24);
- }
+  @include titol(px-a-rem(24));
+}
 
 .text {
   font-size: px-a-rem(16);
 }
 
 .header {
-  display: flex;
+  @include flex-basic;
   justify-content: space-between;
   align-items: center;
   height: $size-4;
@@ -86,18 +158,18 @@ $transition-fast: 0.25s ease;
 
 .logo img {
   height: $size-2-5;
-  display: block;
+  @include responsive-img;
 }
 
 .navegacio {
-  display: flex;
+  @include flex-basic;
   gap: $size-0-3;
   .enllaç {
     position: relative;
     padding: $size-0-625 $size-0-9375;
     color: $gris-oscur;
     text-decoration: none;
-    transition: color $transition-base;
+    @include transition-base(color);
 
     &::after {
       content: "";
@@ -109,7 +181,7 @@ $transition-fast: 0.25s ease;
       background-color: $blau;
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform $transition-base;
+      @include transition-base(transform);
     }
 
     &:hover {
@@ -132,24 +204,22 @@ $transition-fast: 0.25s ease;
 }
 
 .galeria {
-  display: flex;
+  @include flex-center;
   gap: $size-1;
   padding: $size-2;
-  justify-content: center;
 
   .galeria-item {
     width: 33%;
 
     .imatge-container {
       overflow: hidden;
-      box-shadow: $shadow-sm;
-      transition: box-shadow $transition-base;
+      @include shadow(sm);
+      @include transition-base(box-shadow);
     }
 
     img {
-      width: 100%;
-      display: block;
-      transition: transform $transition-base;
+      @include responsive-img;
+      @include transition-base(transform);
     }
 
     &:hover {
@@ -170,10 +240,9 @@ $transition-fast: 0.25s ease;
 }
 
 .equip {
-  display: flex;
+  @include flex-center;
   gap: $size-1-5;
   padding: $size-2-5;
-  justify-content: center;
   background-color: $verd-fluix;
 }
 
@@ -184,13 +253,7 @@ $transition-fast: 0.25s ease;
   padding: $size-1-5;
   text-align: center;
   box-sizing: border-box;
-  transition: transform $transition-fast, box-shadow $transition-fast;
-  will-change: transform;
-
-  &:hover {
-    transform: translateY(-0.5rem);
-    box-shadow: $shadow-base;
-  }
+  @include card-hover;
 
   .avatar {
     width: $size-7-5;
@@ -204,10 +267,7 @@ $transition-fast: 0.25s ease;
   }
 
   .nom {
-    color: $gris-fosc;
-    font-size: $size-1-5;
-    font-weight: bold;
-    margin-bottom: $size-0-5;
+    @include titol($font-size-medium, $gris-fosc);
   }
 
   .carrec {
@@ -217,8 +277,7 @@ $transition-fast: 0.25s ease;
   }
 
   .xarxes {
-    display: flex;
-    justify-content: center;
+    @include flex-center;
     gap: $size-0-75;
   }
 
@@ -231,7 +290,7 @@ $transition-fast: 0.25s ease;
     color: $gris-clar;
     line-height: $size-2-5;
     text-align: center;
-    transition: all $transition-base;
+    @include transition-base(all);
     text-decoration: none;
     font-weight: 600;
     box-sizing: border-box;
@@ -254,23 +313,13 @@ $transition-fast: 0.25s ease;
       font-weight: bold;
     }
     input,textarea{
-      width: 100%;
-      padding: $size-1;
-      border:  $gruix-border $negre;
-      font-size: $size-1;
-      field-sizing: content;
-      &:focus{
-        outline: none;
-        border: 2px solid blue;
-      }
+      @include form-input;
     }
   }
   .boto-enviar{
-    padding: $size-1;
-    background-color: $verd;
-    font-size: $size-1;
+    @include boto($verd);
+    font-size: $font-size-base;
     width: 100%;
-    color: $blanc;
   }
   .boto-enviar:hover{
     background-color: $verd-oscur;
@@ -279,26 +328,23 @@ $transition-fast: 0.25s ease;
 
 .targeta-producte{
   width: $size-300px;
-  border: $gruix-border;
-  padding: $size-1-5;
+  border: $border-width-base $border-style-base;
+  padding: $font-size-medium;
 
   .titol{
-    color: $blau-oscur;
-    font-size: $size-1-5;
+    @include titol($font-size-medium, $blau-oscur);
   }
   .descripcio{
     color: $gris;
-    font-size: $size-1;
+    font-size: $font-size-base;
   }
   .preu{
     font-weight: bold;
     color: $verd;
-    font-size: $size-2;
+    font-size: $font-size-large;
   }
   .boto-compra{
-    background-color: $blau;
-    color: $blanc;
-    padding: $size-1 $size-1-5;
+    @include boto($blau);
   }
   .boto-compra:hover{
     background-color: $blau-oscur;
