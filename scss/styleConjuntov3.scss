@@ -1,0 +1,353 @@
+
+$border-width-base: 1px;
+$border-style-base: solid;
+$border-radius-small: 0.25rem;
+$border-radius-base: 0.5rem;
+$border-radius-large: 1rem;
+
+$verd-fluix: #eef9ef;
+$blau-fluix: #e9f2ff;
+$groc-fluix: #fff6d6;
+$blau: #2f78d6;
+$gris-fosc: #333333;
+$gris-clar: #9aa0a6;
+$groc-clar: lightyellow;
+$gris-oscur: darkgrey;
+$blau-oscur: darkblue;
+$verd-oscur: darkgreen;
+$gris: grey;
+$verd: green;
+$blau: blue;
+$blanc: white;
+$negre: black;
+$darkkhaki: darkkhaki;
+
+$size-0-2: 0.2rem;
+$size-0-25: 0.25rem;
+$size-0-3: 0.3rem;
+$size-0-5: 0.5rem;
+$size-0-625: 0.625rem;
+$size-0-75: 0.75rem;
+$size-0-9375: 0.9375rem;
+$size-1: 1rem;
+$size-1-5: 1.5rem;
+$size-2: 2rem;
+$size-2-5: 2.5rem;
+$size-4: 4rem;
+$size-7-5: 7.5rem;
+$size-18: 18rem;
+$size-36: 36rem;
+
+$font-size-small: 0.5rem;
+$font-size-base: 1rem;
+$font-size-medium: 1.5rem;
+$font-size-large: 2rem;
+$font-size-xlarge: 4rem;
+
+$padding-small: 0.5rem;
+$padding-base: 1rem;
+$padding-medium: 1.5rem;
+$padding-large: 2rem;
+$padding-xlarge: 4rem;
+
+$marge-small: 0.5rem;
+$marge-base: 1rem;
+$marge-medium: 1.5rem;
+$marge-large: 2rem;
+$marge-xlarge: 4rem;
+
+
+$size-18px: 18px;
+$size-300px: 300px;
+
+$shadow-sm: 0 4px 8px rgba(0,0,0,0.1);
+$shadow-base: 0 8px 20px rgba(0,0,0,0.08);
+$shadow-md: 0 10px 25px rgba(0,0,0,0.1);
+$shadow-lg: 0 12px 30px rgba(0,0,0,0.2);
+$shadow-hover: 0 6px 15px rgba(0,0,0,0.15);
+
+
+$transition-base: 0.3s ease;
+$transition-fast: 0.25s ease;
+
+@mixin flex-basic {
+  display: flex;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+@mixin transition-base($property: all) {
+  transition: $property $transition-base;
+}
+
+@mixin shadow($type) {
+  @if $type == sm { box-shadow: $shadow-sm; }
+  @else if $type == base { box-shadow: $shadow-base; }
+  @else if $type == md { box-shadow: $shadow-md; }
+  @else if $type == lg { box-shadow: $shadow-lg; }
+  @else if $type == hover { box-shadow: $shadow-hover; }
+}
+
+@mixin boto($bg-color, $text-color: $blanc, $padding-y: $size-1, $padding-x: $size-1-5) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding: $padding-y $padding-x;
+  border: none;
+  border-radius: $border-radius-small;
+  font-weight: 600;
+  cursor: pointer;
+  @include transition-base(background-color);
+}
+
+@mixin card-hover {
+  @include transition-base(transform, box-shadow);
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-0.5rem);
+    @include shadow(base);
+  }
+}
+
+@mixin responsive-img {
+  width: 100%;
+  display: block;
+}
+
+@mixin form-input {
+  width: 100%;
+  padding: $size-1;
+  border: $border-width-base $border-style-base $negre;
+  font-size: $font-size-base;
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+    border: 2px solid $blau;
+  }
+}
+
+@mixin titol($font-size: $font-size-large, $color: $gris-fosc) {
+  font-size: $font-size;
+  color: $color;
+  font-weight: bold;
+  margin-bottom: $marge-small;
+}
+
+@function px-a-rem($px) {
+  @return calc($px / 16) * 1rem;
+}
+
+.titol {
+  @include titol(px-a-rem(24));
+ }
+
+.text {
+  font-size: px-a-rem(16);
+}
+
+.header {
+  @include flex-basic;
+  justify-content: space-between;
+  align-items: center;
+  height: $size-4;
+  padding: 0 $size-2-5;
+  background-color: $groc-clar;
+}
+
+.logo img {
+  height: $size-2-5;
+  @include responsive-img;
+}
+
+.navegacio {
+  @include flex-basic;
+  gap: $size-0-3;
+  .enllaç {
+    position: relative;
+    padding: $size-0-625 $size-0-9375;
+    color: $gris-oscur;
+    text-decoration: none;
+    @include transition-base(color);
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: $size-0-2;
+      background-color: $blau;
+      transform: scaleX(0);
+      transform-origin: left;
+      @include transition-base(transform);
+    }
+
+    &:hover {
+      color: $blau;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+
+    &.actiu {
+      color: $blau;
+      font-weight: bold;
+
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.galeria {
+  @include flex-center;
+  gap: $size-1;
+  padding: $size-2;
+
+  .galeria-item {
+    width: 33%;
+
+    .imatge-container {
+      overflow: hidden;
+      @include shadow(sm);
+      @include transition-base(box-shadow);
+    }
+
+    img {
+      @include responsive-img;
+      @include transition-base(transform);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .titol {
+    text-align: center;
+    margin-top: $size-1;
+    color: $darkkhaki;
+    font-size: $size-18px;
+  }
+}
+
+.equip {
+  @include flex-center;
+  gap: $size-1-5;
+  padding: $size-2-5;
+  background-color: $verd-fluix;
+}
+
+.membre-card {
+  width: $size-18;
+  background-color: $blau-fluix;
+  border-radius: $size-0-25;
+  padding: $size-1-5;
+  text-align: center;
+  box-sizing: border-box;
+  @include card-hover;
+
+  .avatar {
+    width: $size-7-5;
+    height: $size-7-5;
+    margin-bottom: $size-1;
+    border: $size-0-25 solid $blau;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nom {
+    @include titol($font-size-medium, $gris-fosc);
+  }
+
+  .carrec {
+    color: $gris-clar;
+    font-size: $size-1;
+    margin-bottom: $size-1;
+  }
+
+  .xarxes {
+    @include flex-center;
+    gap: $size-0-75;
+  }
+
+  .xarxa-enllaç {
+    display: inline-block;
+    width: $size-2-5;
+    height: $size-2-5;
+    border-radius: 50%;
+    background-color: $groc-fluix;
+    color: $gris-clar;
+    line-height: $size-2-5;
+    text-align: center;
+    @include transition-base(all);
+    text-decoration: none;
+    font-weight: 600;
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: $blau;
+      color: $blanc;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.formulari{
+  width: $size-36;
+  margin: auto;
+  padding: $size-2;
+  .camp{
+    margin-bottom: $size-1;
+    label{
+      font-weight: bold;
+    }
+    input,textarea{
+      @include form-input;
+    }
+  }
+  .boto-enviar{
+    @include boto($verd);
+    font-size: $font-size-base;
+    width: 100%;
+  }
+  .boto-enviar:hover{
+    background-color: $verd-oscur;
+  }
+}
+
+.targeta-producte{
+  width: $size-300px;
+  border: $border-width-base $border-style-base;
+  padding: $font-size-medium;
+
+  .titol{
+    @include titol($font-size-medium, $blau-oscur);
+  }
+  .descripcio{
+    color: $gris;
+    font-size: $font-size-base;
+  }
+  .preu{
+    font-weight: bold;
+    color: $verd;
+    font-size: $font-size-large;
+  }
+  .boto-compra{
+    @include boto($blau);
+  }
+  .boto-compra:hover{
+    background-color: $blau-oscur;
+  }
+}
