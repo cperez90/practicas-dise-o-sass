@@ -102,7 +102,7 @@ $transition-fast: 0.25s ease;
 }
 
 @mixin card-hover {
-  @include transition-base(transform, box-shadow);
+  @include transition-base(transform);
   will-change: transform;
 
   &:hover {
