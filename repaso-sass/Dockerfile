@@ -1,0 +1,4 @@
+FROM node:18
+RUN apt update
+RUN npm install -g sass
+ENTRYPOINT ["sass","--watch","--poll","scss:css"]

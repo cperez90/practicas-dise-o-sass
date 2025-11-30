@@ -1,0 +1,12 @@
+services:
+  sass-repaso:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
+    container_name: scss-repaso
+    working_dir: /app
+    volumes:
+      - ./scss:/app
+    restart: unless-stopped

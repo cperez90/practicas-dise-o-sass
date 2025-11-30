@@ -1,0 +1,31 @@
+.targeta-producte {
+  width: 300px;
+  border: 1px solid black;
+  padding: 1.5rem;
+}
+.targeta-producte .titol {
+  color: darkblue;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+.targeta-producte .descripcio {
+  color: grey;
+  font-size: 1rem;
+}
+.targeta-producte .preu {
+  font-weight: bold;
+  color: green;
+  font-size: 2rem;
+}
+.targeta-producte .boto-compra {
+  background: blue;
+  color: white;
+  padding: 1rem 1.5rem;
+  width: 100%;
+  font-size: 16px;
+}
+.targeta-producte .boto-compra:hover {
+  background: darkblue;
+}
+
+/*# sourceMappingURL=style2-profe.css.map */
