@@ -1,0 +1,400 @@
+/* -------------------------------------------------------- */
+/* 🌈 VARIABLES GLOBALS — STYLECONJUNTV2                    */
+/* -------------------------------------------------------- */
+
+/* 🎨 PALETA DE COLORS */
+$color-primary: blue;
+$color-primary-light: #3d6fe0;
+$color-primary-dark: #153a7d;
+
+$color-secondary: grey;
+$color-secondary-light: #a3a3a3;
+
+$color-success: green;
+$color-success-dark: #05651f;
+
+$color-warning: darkkhaki;
+$color-light: #ffffff;
+$color-dark: #000000;
+
+$color-border: #111111;
+
+/* -------------------------------------------------------- */
+/* 📏 TIPOGRAFIA — ESCALA GLOBAL                            */
+/* -------------------------------------------------------- */
+
+$base-size: 1rem;
+
+$font-size-small: $base-size * 0.875;   // 0.875rem
+$font-size-base: $base-size;            // 1rem
+$font-size-medium: $base-size * 1.125;  // 1.125rem
+$font-size-large: $base-size * 1.5;     // 1.5rem
+$font-size-xlarge: $base-size * 2;      // 2rem
+
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+/* -------------------------------------------------------- */
+/* 📦 ESPAIATS GLOBALS                                      */
+/* -------------------------------------------------------- */
+
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+/* -------------------------------------------------------- */
+/* 🔳 BORDES GLOBALS                                        */
+/* -------------------------------------------------------- */
+
+$border-width: 1px;
+$border-style: solid;
+$border-radius-sm: 0.25rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 0.75rem;
+
+$border-default: $border-width $border-style $color-border;
+
+/* -------------------------------------------------------- */
+/* 🌫️ OMBRES GLOBALS                                        */
+/* -------------------------------------------------------- */
+
+$shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+$shadow-base: 0 4px 8px rgba(0,0,0,0.15);
+$shadow-md: 0 6px 12px rgba(0,0,0,0.18);
+$shadow-lg: 0 8px 16px rgba(0,0,0,0.20);
+$shadow-hover: 0 10px 20px rgba(0,0,0,0.25);
+
+/* -------------------------------------------------------- */
+/* ⚡ TRANSICIONS GLOBALS                                   */
+/* -------------------------------------------------------- */
+
+$transition-fast: 0.15s ease-in-out;
+$transition-base: 0.3s ease;
+
+
+/* -------------------------------------------------------- */
+/* 🔧 MIXINS GLOBALS                                        */
+/* -------------------------------------------------------- */
+
+/*
+  Mixin: flex-center
+  Descripció: Aplica display flex amb alineació centrada horitzontal i vertical.
+*/
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*
+  Mixin: flex-between
+  Descripció: Flexbox amb elements separats als extrems.
+*/
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*
+  Mixin: responsive-img
+  Descripció: Imatge que ocupa el 100% i manté proporció correcta.
+*/
+@mixin responsive-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*
+  Mixin: card-base
+  Descripció: Estil bàsic de targeta amb padding, radius i ombra.
+*/
+@mixin card-base($radius: $border-radius-md, $shadow: $shadow-base, $padding: $spacing-md) {
+  padding: $padding;
+  border-radius: $radius;
+  box-shadow: $shadow;
+  background: $color-light;
+}
+
+/*
+  Mixin: transition-base
+  Descripció: Aplica la transició global definida.
+*/
+@mixin transition-base {
+  transition: $transition-base;
+}
+
+/*
+  Mixin: scale-hover
+  Descripció: Fa que un element s'elevi lleugerament quan es fa hover.
+*/
+@mixin scale-hover($amount: -0.5rem) {
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY($amount);
+    box-shadow: $shadow-lg;
+  }
+}
+
+/*
+  Mixin: button-style
+  Descripció: Estil base per botons coherents a tot el projecte.
+*/
+@mixin button-style($bg, $bg-hover, $color: $color-light) {
+  background: $bg;
+  color: $color;
+  padding: $spacing-sm;
+  width: 100%;
+  border-radius: $border-radius-md;
+  font-size: $font-size-base;
+  transition: background $transition-base;
+
+  &:hover {
+    background: $bg-hover;
+  }
+}
+
+/*
+  Mixin: underline-hover
+  Descripció: Enllaç amb una línia animada en hover.
+*/
+@mixin underline-hover($color: $color-primary) {
+  position: relative;
+  transition: color $transition-base;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: $color;
+    transform: scaleX(0);
+    transition: transform $transition-base;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+
+
+/* -------------------------------------------------------- */
+/* 🟨 HEADER                                                */
+/* -------------------------------------------------------- */
+
+.header {
+  @include flex-between;
+  height: $spacing-xl;
+  padding: 0 $spacing-lg;
+  background: #fff9cc;
+
+  .logo img {
+    max-height: $spacing-lg;
+  }
+
+  .navegacio {
+    display: flex;
+    gap: $spacing-xs;
+
+    .enllaç {
+      padding: $spacing-xs $spacing-sm;
+      color: $color-secondary;
+      text-decoration: none;
+
+      @include underline-hover($color-primary);
+
+      &.actiu {
+        color: $color-primary;
+        font-weight: $font-weight-bold;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}
+
+/* -------------------------------------------------------- */
+/* 🏞️ GALERIA                                               */
+/* -------------------------------------------------------- */
+
+.galeria {
+  @include flex-center;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+
+  .galeria-item {
+    width: 33%;
+
+    .imatge-container {
+      overflow: hidden;
+      @include card-base($border-radius-md,$shadow-base,0);
+
+      img {
+        @include responsive-img;
+        transition: transform $transition-base;
+      }
+
+      &:hover {
+        box-shadow: $shadow-hover;
+
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .titol {
+      text-align: center;
+      margin-top: $spacing-sm;
+      color: $color-warning;
+      font-size: $font-size-medium;
+    }
+  }
+}
+
+
+/* -------------------------------------------------------- */
+/* 👥 EQUIP                                                 */
+/* -------------------------------------------------------- */
+
+.equip {
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  justify-content: center;
+  background: lightgreen;
+
+  .membre-card {
+    width: 18.75rem;
+    text-align: center;
+
+    @include card-base($border-radius-lg,$shadow-base,$spacing-md);
+    @include scale-hover(-0.5rem);
+
+    .avatar {
+      width: 7.5rem;
+      height: 7.5rem;
+      border-radius: 50%;
+      margin-bottom: $spacing-sm;
+      border: 4px $border-style lightblue;
+      object-fit: cover;
+    }
+
+    .nom {
+      color: $color-dark;
+      font-size: $font-size-large;
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-xs;
+    }
+
+    .carrec {
+      color: $color-secondary-light;
+      font-size: $font-size-base;
+      margin-bottom: $spacing-sm;
+    }
+
+    .xarxes {
+      display: flex;
+      justify-content: center;
+      gap: $spacing-sm;
+
+      .xarxa-enllaç {
+        @include flex-center;
+        @include transition-base;
+        border-radius: 50%;
+
+        &:hover {
+          background: $color-primary;
+          color: $color-light;
+        }
+      }
+    }
+
+    &:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: $shadow-lg;
+    }
+  }
+}
+
+
+/* -------------------------------------------------------- */
+/* 📝 FORMULARI                                             */
+/* -------------------------------------------------------- */
+
+.formulari {
+  max-width: 36rem;
+  margin: auto;
+  padding: $spacing-lg;
+
+  .camp {
+    margin-bottom: $spacing-sm;
+
+    label {
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-xs;
+      display: block;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: $spacing-sm;
+      border: $border-default;
+      font-size: $font-size-base;
+      transition: border $transition-fast;
+      resize: vertical;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $color-primary;
+      }
+    }
+  }
+
+  .boto-enviar {
+    @include button-style($color-success, $color-success-dark);
+  }
+}
+
+
+/* -------------------------------------------------------- */
+/* 🎁 TARGETA PRODUCTE (PREMI)                              */
+/* -------------------------------------------------------- */
+
+.targeta-producte {
+  width: 22rem;
+  border: $border-default;
+  padding: $spacing-md;
+  border-radius: $border-radius-lg;
+
+  .titol {
+    color: $color-primary-dark;
+    font-size: $font-size-large;
+    margin-top: 0;
+  }
+
+  .descripcio {
+    color: $color-secondary;
+    font-size: $font-size-base;
+  }
+
+  .preu {
+    font-weight: $font-weight-bold;
+    color: $color-success;
+    font-size: $font-size-xlarge;
+  }
+
+  .boto-compra {
+    @include button-style($color-primary,$color-primary-dark);
+  }
+}

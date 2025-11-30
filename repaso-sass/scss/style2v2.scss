@@ -1,34 +1,53 @@
+$color-title: darkblue;
+$color-text: grey;
+$color-price: green;
+$color-button-bg: blue;
+$color-button-text: white;
+$color-border: black;
+
+$size-card-width: 300px;
+$size-padding-lg: 1.5rem;
+$size-padding-sm: 1rem;
+$size-title: 1.5rem;
+$size-text: 1rem;
+$size-price: 2rem;
+$size-full: 100%;
+$size-button-font: 16px;
+
+$border-default: 1px solid $color-border;
+$font-bold: bold;
+
 .targeta-producte {
-    width: 300px;
-    border: 1px solid black;
-    padding: 1.5rem;
+  width: $size-card-width;
+  border: $border-default;
+  padding: $size-padding-lg;
 
-    .titol {
-        color: darkblue;
-        font-size: 1.5rem;
-        margin-top: 0;
+  .titol {
+    color: $color-title;
+    font-size: $size-title;
+    margin-top: 0;
+  }
+
+  .descripcio {
+    color: $color-text;
+    font-size: $size-text;
+  }
+
+  .preu {
+    font-weight: $font-bold;
+    color: $color-price;
+    font-size: $size-price;
+  }
+
+  .boto-compra {
+    background: $color-button-bg;
+    color: $color-button-text;
+    padding: $size-padding-sm $size-padding-lg;
+    width: $size-full;
+    font-size: $size-button-font;
+
+    &:hover {
+      background: $color-title;
     }
-
-    .descripcio {
-        color: grey;
-        font-size: 1rem;
-    }
-
-    .preu {
-        font-weight: bold;
-        color: green;
-        font-size: 2rem;
-    }
-
-    .boto-compra {
-        background: blue;
-        color: white;
-        padding: 1rem 1.5rem;
-        width: 100%;
-        font-size: 16px;
-
-        &:hover {
-            background: darkblue;
-        }
-    }
+  }
 }

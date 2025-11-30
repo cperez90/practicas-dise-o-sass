@@ -1,0 +1,61 @@
+@charset "UTF-8";
+.equip {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2.5rem;
+  justify-content: center;
+  background: lightgreen;
+}
+.equip .membre-card {
+  width: 18.75rem;
+  background: white;
+  border-radius: 0.625rem;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.equip .membre-card .avatar {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 0.25rem solid lightblue;
+  object-fit: cover;
+}
+.equip .membre-card .nom {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.equip .membre-card .carrec {
+  color: lightgray;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.equip .membre-card .xarxes {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+}
+.equip .membre-card .xarxes .xarxa-enllaç {
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: lightgrey;
+  color: black;
+  line-height: 2.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+.equip .membre-card .xarxes .xarxa-enllaç:hover {
+  background: blue;
+  color: white;
+}
+.equip .membre-card:hover {
+  transform: translateY(-0.5rem);
+}
+
+/*# sourceMappingURL=style6.css.map */

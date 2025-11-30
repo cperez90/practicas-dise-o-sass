@@ -1,0 +1,284 @@
+@charset "UTF-8";
+/* -------------------------------------------------------- */
+/* 🌈 VARIABLES GLOBALS — STYLECONJUNTV2                    */
+/* -------------------------------------------------------- */
+/* 🎨 PALETA DE COLORS */
+/* -------------------------------------------------------- */
+/* 📏 TIPOGRAFIA — ESCALA GLOBAL                            */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+/* 📦 ESPAIATS GLOBALS                                      */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+/* 🔳 BORDES GLOBALS                                        */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+/* 🌫️ OMBRES GLOBALS                                        */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+/* ⚡ TRANSICIONS GLOBALS                                   */
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
+/* 🔧 MIXINS GLOBALS                                        */
+/* -------------------------------------------------------- */
+/*
+  Mixin: flex-center
+  Descripció: Aplica display flex amb alineació centrada horitzontal i vertical.
+*/
+/*
+  Mixin: flex-between
+  Descripció: Flexbox amb elements separats als extrems.
+*/
+/*
+  Mixin: responsive-img
+  Descripció: Imatge que ocupa el 100% i manté proporció correcta.
+*/
+/*
+  Mixin: card-base
+  Descripció: Estil bàsic de targeta amb padding, radius i ombra.
+*/
+/*
+  Mixin: transition-base
+  Descripció: Aplica la transició global definida.
+*/
+/*
+  Mixin: scale-hover
+  Descripció: Fa que un element s'elevi lleugerament quan es fa hover.
+*/
+/*
+  Mixin: button-style
+  Descripció: Estil base per botons coherents a tot el projecte.
+*/
+/*
+  Mixin: underline-hover
+  Descripció: Enllaç amb una línia animada en hover.
+*/
+/* -------------------------------------------------------- */
+/* 🟨 HEADER                                                */
+/* -------------------------------------------------------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  padding: 0 2rem;
+  background: #fff9cc;
+}
+.header .logo img {
+  max-height: 2rem;
+}
+.header .navegacio {
+  display: flex;
+  gap: 0.5rem;
+}
+.header .navegacio .enllaç {
+  padding: 0.5rem 1rem;
+  color: grey;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.header .navegacio .enllaç::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: blue;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.header .navegacio .enllaç:hover::after {
+  transform: scaleX(1);
+}
+.header .navegacio .enllaç.actiu {
+  color: blue;
+  font-weight: 700;
+}
+.header .navegacio .enllaç.actiu::after {
+  transform: scaleX(1);
+}
+
+/* -------------------------------------------------------- */
+/* 🏞️ GALERIA                                               */
+/* -------------------------------------------------------- */
+.galeria {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+}
+.galeria .galeria-item {
+  width: 33%;
+}
+.galeria .galeria-item .imatge-container {
+  overflow: hidden;
+  padding: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+}
+.galeria .galeria-item .imatge-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+.galeria .galeria-item .imatge-container:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+.galeria .galeria-item .imatge-container:hover img {
+  transform: scale(1.1);
+}
+.galeria .galeria-item .titol {
+  text-align: center;
+  margin-top: 1rem;
+  color: darkkhaki;
+  font-size: 1.125rem;
+}
+
+/* -------------------------------------------------------- */
+/* 👥 EQUIP                                                 */
+/* -------------------------------------------------------- */
+.equip {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2rem;
+  justify-content: center;
+  background: lightgreen;
+}
+.equip .membre-card {
+  width: 18.75rem;
+  text-align: center;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.equip .membre-card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.equip .membre-card .avatar {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 4px solid lightblue;
+  object-fit: cover;
+}
+.equip .membre-card .nom {
+  color: #000000;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.equip .membre-card .carrec {
+  color: #a3a3a3;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.equip .membre-card .xarxes {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.equip .membre-card .xarxes .xarxa-enllaç {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s ease;
+  border-radius: 50%;
+}
+.equip .membre-card .xarxes .xarxa-enllaç:hover {
+  background: blue;
+  color: #ffffff;
+}
+.equip .membre-card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* -------------------------------------------------------- */
+/* 📝 FORMULARI                                             */
+/* -------------------------------------------------------- */
+.formulari {
+  max-width: 36rem;
+  margin: auto;
+  padding: 2rem;
+}
+.formulari .camp {
+  margin-bottom: 1rem;
+}
+.formulari .camp label {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.formulari .camp input,
+.formulari .camp textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #111111;
+  font-size: 1rem;
+  transition: border 0.15s ease-in-out;
+  resize: vertical;
+}
+.formulari .camp input:focus,
+.formulari .camp textarea:focus {
+  outline: none;
+  border: 2px solid blue;
+}
+.formulari .boto-enviar {
+  background: green;
+  color: #ffffff;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+.formulari .boto-enviar:hover {
+  background: #05651f;
+}
+
+/* -------------------------------------------------------- */
+/* 🎁 TARGETA PRODUCTE (PREMI)                              */
+/* -------------------------------------------------------- */
+.targeta-producte {
+  width: 22rem;
+  border: 1px solid #111111;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+}
+.targeta-producte .titol {
+  color: #153a7d;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+.targeta-producte .descripcio {
+  color: grey;
+  font-size: 1rem;
+}
+.targeta-producte .preu {
+  font-weight: 700;
+  color: green;
+  font-size: 2rem;
+}
+.targeta-producte .boto-compra {
+  background: blue;
+  color: #ffffff;
+  padding: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+.targeta-producte .boto-compra:hover {
+  background: #153a7d;
+}
+
+/*# sourceMappingURL=styleConjuntov3.css.map */

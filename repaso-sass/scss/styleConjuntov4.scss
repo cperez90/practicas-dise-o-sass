@@ -1,0 +1,453 @@
+/* -------------------------------------------------------- */
+/* 🌈 VARIABLES GLOBALS — STYLECONJUNTV2                    */
+/* -------------------------------------------------------- */
+
+/* 🎨 PALETA DE COLORS */
+$color-primary: blue;
+$color-primary-light: #3d6fe0;
+$color-primary-dark: #153a7d;
+
+$color-secondary: grey;
+$color-secondary-light: #a3a3a3;
+
+$color-success: green;
+$color-success-dark: #05651f;
+
+$color-warning: darkkhaki;
+$color-light: #ffffff;
+$color-dark: #000000;
+
+$color-border: #111111;
+
+/* -------------------------------------------------------- */
+/* 📏 TIPOGRAFIA — ESCALA GLOBAL                            */
+/* -------------------------------------------------------- */
+
+$base-size: 1rem;
+$escala: 1.25;
+
+$font-size-small: $base-size * 0.875;
+$font-size-base: $base-size;
+$font-size-medium: $base-size * 1.125;
+$font-size-large: $base-size * 1.5;
+$font-size-xlarge: $base-size * 2;
+
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+
+/* -------------------------------------------------------- */
+/* 📦 ESPAIATS GLOBALS                                      */
+/* -------------------------------------------------------- */
+
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+
+/* -------------------------------------------------------- */
+/* 🔳 BORDES GLOBALS                                        */
+/* -------------------------------------------------------- */
+
+$border-width: 1px;
+$border-style: solid;
+$border-radius-sm: 0.25rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 0.75rem;
+
+$border-default: $border-width $border-style $color-border;
+
+/* -------------------------------------------------------- */
+/* 🌫️ OMBRES GLOBALS                                        */
+/* -------------------------------------------------------- */
+
+$shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+$shadow-base: 0 4px 8px rgba(0,0,0,0.15);
+$shadow-md: 0 6px 12px rgba(0,0,0,0.18);
+$shadow-lg: 0 8px 16px rgba(0,0,0,0.20);
+$shadow-hover: 0 10px 20px rgba(0,0,0,0.25);
+
+/* -------------------------------------------------------- */
+/* ⚡ TRANSICIONS GLOBALS                                   */
+/* -------------------------------------------------------- */
+
+$transition-fast: 0.15s ease-in-out;
+$transition-base: 0.3s ease;
+
+/* -------------------------------------------------------- */
+/* 🔧 MIXINS                                                */
+/* -------------------------------------------------------- */
+
+@mixin boto($variant: "primary", $size: "medium", $full-width: false) {
+
+  $bg: null !default;
+  $bg-hover: null !default;
+  $text-color: null !default;
+  $border: null !default;
+  $padding: null !default;
+  $font: null !default;
+  // Variants
+  @if ($variant == "primary") {
+    $bg: $color-primary;
+    $bg-hover: $color-primary-dark;
+    $text-color: $color-light;
+    $border: none;
+
+  } @else if ($variant == "secondary") {
+    $bg: $color-secondary;
+    $bg-hover: $color-secondary-light;
+    $text-color: $color-dark;
+    $border: none;
+
+  } @else if ($variant == "accent") {
+    $bg: $color-warning;
+    $bg-hover: darken($color-warning, 10%);
+    $text-color: $color-dark;
+    $border: none;
+
+  } @else if ($variant == "outline") {
+    $bg: transparent;
+    $bg-hover: rgba($color-primary, 0.1);
+    $text-color: $color-primary;
+    $border: 2px solid $color-primary;
+
+  } @else {
+    @warn "Variant '#{$variant}' no és vàlida. S'utilitza 'primary'.";
+    $bg: $color-primary;
+    $bg-hover: $color-primary-dark;
+    $text-color: $color-light;
+    $border: none;
+  }
+
+  // Sizes
+  @if ($size == "small") {
+    $padding: $spacing-xs $spacing-sm;
+    $font: $font-size-small;
+  } @else if ($size == "medium") {
+    $padding: $spacing-sm $spacing-md;
+    $font: $font-size-base;
+  } @else if ($size == "large") {
+    $padding: $spacing-md $spacing-lg;
+    $font: $font-size-large;
+  } @else {
+    @warn "Size '#{$size}' no és vàlid. S'utilitza 'medium'.";
+    $padding: $spacing-sm $spacing-md;
+    $font: $font-size-base;
+  }
+
+  background: $bg;
+  color: $text-color;
+  padding: $padding;
+  font-size: $font;
+  border-radius: $border-radius-md;
+  transition: background $transition-base;
+
+  @if variable-exists(border) and $border != none {
+    border: $border;
+  }
+
+  @if $full-width == true {
+    width: 100%;
+    display: block;
+  }
+
+  &:hover {
+    background: $bg-hover;
+  }
+}
+
+@mixin card($theme: default, $interactive: false, $padding: $spacing-md) {
+  padding: $padding;
+  border-radius: $border-radius-lg;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  // Temes
+  @if $theme == default {
+    background: $color-light;
+    border: $border-default;
+    box-shadow: $shadow-sm;
+    color: $color-dark;
+  } @else if $theme == elevated {
+    background: $color-light;
+    border: none;
+    box-shadow: $shadow-base;
+    color: $color-dark;
+  } @else if $theme == outlined {
+    background: $color-light;
+    border: $border-width solid $color-primary;
+    box-shadow: none;
+    color: $color-dark;
+  } @else if $theme == gradient {
+    background: linear-gradient(to bottom right, $color-primary, $color-secondary);
+    border: none;
+    box-shadow: $shadow-sm;
+    color: $color-light;
+  } @else if $theme == dark {
+    background: $color-dark;
+    border: none;
+    box-shadow: $shadow-sm;
+    color: $color-light;
+  } @else {
+    @warn "Tema `#{$theme}` no vàlid. S'utilitzarà `default`.";
+    background: $color-light;
+    border: $border-default;
+    box-shadow: $shadow-sm;
+    color: $color-dark;
+  }
+
+  // Interactivitat
+  @if $interactive == true {
+    &:hover {
+      transform: translateY(-0.5rem);
+      @if $theme != outlined {
+        box-shadow: $shadow-lg;
+      }
+    }
+  }
+
+  // Permet afegir estils addicionals
+  @content;
+}
+
+/// Funció per calcular mides tipogràfiques amb escala modular
+/// @param $nivel: enter positiu, negatiu o 0
+/// @return mida en rem
+@function calcular-font-size($nivel) {
+  // Límit superior i inferior
+  @if $nivel > 5 {
+    @warn "Nivell #{$nivel} massa alt. S'utilitzarà nivell 5.";
+    $nivel: 5;
+  } @else if $nivel < -3 {
+    @warn "Nivell #{$nivel} massa baix. S'utilitzarà nivell -3.";
+    $nivel: -3;
+  }
+
+  // Nivell 0 -> mida base
+  @if $nivel == 0 {
+    @return $base-size;
+  } @else if $nivel > 0 {
+    // Nivells positius: multiplicació
+    $mida: $base-size;
+    @for $i from 1 through $nivel {
+      $mida: $mida * $escala;
+    }
+    @return $mida;
+  } @else if $nivel < 0 {
+    // Nivells negatius: divisió
+    $mida: $base-size;
+    @for $i from 1 through abs($nivel) {
+      $mida: $mida / $escala;
+    }
+    @return $mida;
+  }
+}
+
+@function ajustar-color($color-base, $variant) {
+  // Validar que és un color
+  @if type-of($color-base) != "color" {
+    @error "#{$color-base} no és un color vàlid!";
+  }
+
+  // Validar la variant
+  $variants-valides: dark, darker, light, lighter, muted, vibrant;
+  @if not index($variants-valides, $variant) {
+    @error "Variant #{$variant} no és vàlida!";
+  }
+
+  // Aplicar modificacions segons la variant
+  @if $variant == dark {
+    @return darken($color-base, 15%);
+  } @else if $variant == darker {
+    @return darken($color-base, 25%);
+  } @else if $variant == light {
+    @return lighten($color-base, 20%);
+  } @else if $variant == lighter {
+    @return lighten($color-base, 35%);
+  } @else if $variant == muted {
+    @return desaturate($color-base, 30%);
+  } @else if $variant == vibrant {
+    @return saturate($color-base, 20%);
+  }
+}
+
+
+/* -------------------------------------------------------- */
+/* 🟨 HEADER                                                */
+/* -------------------------------------------------------- */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $spacing-xl;
+  padding: 0 $spacing-lg;
+  background: #fff9cc;
+
+  .logo img {
+    max-height: $spacing-lg;
+  }
+
+  .navegacio {
+    display: flex;
+    gap: $spacing-xs;
+
+    .enllaç {
+      padding: $spacing-xs $spacing-sm;
+      color: $color-secondary;
+      text-decoration: none;
+      position: relative;
+      transition: color $transition-base;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: $color-primary;
+        transform: scaleX(0);
+        transition: transform $transition-base;
+      }
+
+      &:hover {
+        color: $color-primary;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+
+      &.actiu {
+        color: $color-primary;
+        font-weight: $font-weight-bold;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}
+
+/* -------------------------------------------------------- */
+/* 🏞️ GALERIA                                               */
+/* -------------------------------------------------------- */
+
+.galeria {
+  display: flex;
+  gap: $spacing-sm;
+  padding: $spacing-lg;
+  justify-content: center;
+
+  .galeria-item {
+    width: 33%;
+
+    .imatge-container {
+      overflow: hidden;
+      box-shadow: $shadow-base;
+      border-radius: $border-radius-md;
+      transition: $transition-base;
+
+      img {
+        width: 100%;
+        display: block;
+        transition: transform $transition-base;
+      }
+
+      &:hover {
+        box-shadow: $shadow-hover;
+
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .titol {
+      text-align: center;
+      margin-top: $spacing-sm;
+      color: $color-warning;
+      font-size: $font-size-medium;
+    }
+  }
+}
+
+/* -------------------------------------------------------- */
+/* 👥 EQUIP                                                 */
+/* -------------------------------------------------------- */
+
+.equip {
+  display: flex;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  justify-content: center;
+  background: lightgreen;
+
+  .membre-card {
+    @include card($theme: elevated, $interactive: true) {
+      text-align: center;
+
+      .avatar {
+        width: 7.5rem;
+        height: 7.5rem;
+        border-radius: 50%;
+        border: 4px solid lightblue;
+        object-fit: cover;
+        margin-bottom: $spacing-sm;
+      }
+
+      .nom { font-weight: $font-weight-bold; }
+    }
+  }
+}
+
+/* -------------------------------------------------------- */
+/* 📝 FORMULARI                                             */
+/* -------------------------------------------------------- */
+
+.formulari {
+  max-width: 36rem;
+  margin: auto;
+  padding: $spacing-lg;
+
+  .camp {
+    margin-bottom: $spacing-sm;
+
+    label {
+      font-weight: $font-weight-bold;
+      margin-bottom: $spacing-xs;
+      display: block;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: $spacing-sm;
+      border: $border-default;
+      font-size: $font-size-base;
+      transition: border $transition-fast;
+      resize: vertical;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $color-primary;
+      }
+    }
+  }
+
+  .boto-enviar {
+    @include boto("success", "medium", true);
+  }
+}
+
+/* -------------------------------------------------------- */
+/* 🎁 TARGETA PRODUCTE (PREMI)                              */
+/* -------------------------------------------------------- */
+
+.targeta-producte {
+  @include card($theme: gradient, $interactive: true, $padding: $spacing-lg) {
+    .preu { font-size: $font-size-xlarge; color: $color-success; }
+    .boto-compra { @include boto($variant: primary); }
+  }
+}

@@ -1,0 +1,287 @@
+
+$color-primary: blue;
+$color-primary-dark: darkblue;
+$color-secondary: green;
+$color-secondary-dark: darkgreen;
+
+$color-text-main: black;
+$color-text-muted: grey;
+$color-text-light: white;
+
+$color-highlight: darkkhaki;
+
+$color-border: black;
+$color-border-lightblue: lightblue;
+$color-border-lightgray: lightgray;
+$color-border-lightgrey: lightgrey;
+
+$bg-light: lightyellow;
+$bg-light-green: lightgreen;
+
+$shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+$size-card-width: 300px;
+$size-max-form: 36rem;
+
+$size-padding-lg: 1.5rem;
+$size-padding-md: 1rem;
+$size-padding-sm: 0.75rem;
+
+$size-font-title: 1.5rem;
+$size-font-base: 1rem;
+$size-font-price: 2rem;
+$size-font-small: 16px;
+$size-font-gallery: 18px;
+
+$size-header-height: 4rem;
+$size-logo-maxheight: 2.5rem;
+
+$size-full: 100%;
+
+$icon-size: 2.5rem;
+$avatar-size: 7.5rem;
+
+$border-default: 1px solid $color-border;
+
+$font-bold: bold;
+
+.targeta-producte {
+  width: $size-card-width;
+  border: $border-default;
+  padding: $size-padding-lg;
+
+  .titol {
+    color: $color-primary-dark;
+    font-size: $size-font-title;
+    margin-top: 0;
+  }
+
+  .descripcio {
+    color: $color-text-muted;
+    font-size: $size-font-base;
+  }
+
+  .preu {
+    font-weight: $font-bold;
+    color: $color-secondary;
+    font-size: $size-font-price;
+  }
+
+  .boto-compra {
+    background: $color-primary;
+    color: $color-text-light;
+    padding: $size-padding-md $size-padding-lg;
+    width: $size-full;
+    font-size: $size-font-small;
+
+    &:hover {
+      background: $color-primary-dark;
+    }
+  }
+}
+
+
+.formulari {
+  max-width: $size-max-form;
+  margin: auto;
+  padding: 2rem;
+
+  .camp {
+    margin-bottom: 1rem;
+
+    label {
+      font-weight: $font-bold;
+      margin-bottom: 1rem;
+    }
+
+    input,
+    textarea {
+      width: $size-full;
+      padding: $size-padding-md;
+      border: $border-default;
+      font-size: $size-font-base;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $color-primary;
+      }
+    }
+  }
+
+  .boto-enviar {
+    background: $color-secondary;
+    color: $color-text-light;
+    font-size: $size-font-base;
+    width: $size-full;
+    padding: $size-padding-md;
+
+    &:hover {
+      background: $color-secondary-dark;
+    }
+  }
+}
+
+
+.galeria {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+  justify-content: center;
+
+  .galeria-item {
+    width: 33%;
+
+    .imatge-container {
+      overflow: hidden;
+      box-shadow: $shadow-sm;
+
+      img {
+        width: $size-full;
+        display: block;
+      }
+
+      &:hover {
+        box-shadow: $shadow-md;
+
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    .titol {
+      text-align: center;
+      margin-top: 1rem;
+      color: $color-highlight;
+      font-size: $size-font-gallery;
+    }
+  }
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: $size-header-height;
+  padding: 0 2.5rem;
+  background: $bg-light;
+
+  .logo {
+    img {
+      max-height: $size-logo-maxheight;
+      display: block;
+    }
+  }
+
+  .navegacio {
+    display: flex;
+    gap: 0.3125rem;
+
+    .enllaç {
+      padding: 0.625rem 0.9375rem;
+      color: gray;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.3s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: $size-full;
+        height: 0.1875rem;
+        background: $color-primary;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      &:hover {
+        color: $color-primary;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+
+      &.actiu {
+        color: $color-primary;
+        font-weight: $font-bold;
+
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+}
+
+
+.equip {
+  display: flex;
+  gap: 1.5rem;
+  padding: 2.5rem;
+  justify-content: center;
+  background: $bg-light-green;
+
+  .membre-card {
+    width: 18.75rem;
+    background: $color-text-light;
+    border-radius: 0.625rem;
+    padding: $size-padding-lg;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .avatar {
+      width: $avatar-size;
+      height: $avatar-size;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 0.25rem solid $color-border-lightblue;
+      object-fit: cover;
+    }
+
+    .nom {
+      color: $color-text-main;
+      font-size: $size-font-title;
+      font-weight: $font-bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .carrec {
+      color: $color-border-lightgray;
+      font-size: $size-font-base;
+      margin-bottom: 1rem;
+    }
+
+    .xarxes {
+      display: flex;
+      justify-content: center;
+      gap: $size-padding-sm;
+
+      .xarxa-enllaç {
+        display: inline-block;
+        width: $icon-size;
+        height: $icon-size;
+        border-radius: 50%;
+        background: $color-border-lightgrey;
+        color: $color-text-main;
+        line-height: $icon-size;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: $font-bold;
+
+        &:hover {
+          background: $color-primary;
+          color: $color-text-light;
+        }
+      }
+    }
+
+    &:hover {
+      transform: translateY(-0.5rem);
+    }
+  }
+}

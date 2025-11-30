@@ -1,0 +1,31 @@
+.galeria {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+  justify-content: center;
+}
+.galeria .galeria-item {
+  width: 33%;
+}
+.galeria .galeria-item .imatge-container {
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.galeria .galeria-item .imatge-container img {
+  width: 100%;
+  display: block;
+}
+.galeria .galeria-item .imatge-container:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.galeria .galeria-item .imatge-container:hover img {
+  transform: scale(1.1);
+}
+.galeria .galeria-item .titol {
+  text-align: center;
+  margin-top: 1rem;
+  color: darkkhaki;
+  font-size: 18px;
+}
+
+/*# sourceMappingURL=style4.css.map */

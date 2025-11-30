@@ -8,5 +8,5 @@ services:
     container_name: scss-repaso
     working_dir: /app
     volumes:
-      - ./scss:/app
+      - ./:/app
     restart: unless-stopped
