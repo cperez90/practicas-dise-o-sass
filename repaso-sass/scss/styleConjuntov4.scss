@@ -330,6 +330,82 @@ $transition-base: 0.3s ease;
   }
 }
 
+$spacing-scale: (
+        0: 0rem,
+        1: 0.25rem,
+        2: 0.5rem,
+        3: 0.75rem,
+        4: 1rem,
+        5: 1.5rem,
+        6: 2rem,
+        7: 3rem,
+        8: 4rem
+);
+
+@function spacing($level) {
+  @if map-has-key($spacing-scale, $level) {
+    @return map-get($spacing-scale, $level);
+  } @else {
+    @warn "Nivell de spacing #{$level} no definit. Retornant 0.";
+    @return 0;
+  }
+}
+
+@for $i from 0 through 8 {
+  // Margin complet
+  .m-#{$i} { margin: spacing($i); }
+
+  // Padding complet
+  .p-#{$i} { padding: spacing($i); }
+
+  // Marges direccionals
+  .mt-#{$i} { margin-top: spacing($i); }
+  .mr-#{$i} { margin-right: spacing($i); }
+  .mb-#{$i} { margin-bottom: spacing($i); }
+  .ml-#{$i} { margin-left: spacing($i); }
+
+  // Paddings direccionals
+  .pt-#{$i} { padding-top: spacing($i); }
+  .pr-#{$i} { padding-right: spacing($i); }
+  .pb-#{$i} { padding-bottom: spacing($i); }
+  .pl-#{$i} { padding-left: spacing($i); }
+
+  // Marges eixos
+  .mx-#{$i} { margin-left: spacing($i); margin-right: spacing($i); }
+  .my-#{$i} { margin-top: spacing($i); margin-bottom: spacing($i); }
+
+  // Paddings eixos
+  .px-#{$i} { padding-left: spacing($i); padding-right: spacing($i); }
+  .py-#{$i} { padding-top: spacing($i); padding-bottom: spacing($i); }
+}
+
+$displays: block, inline, inline-block, flex, inline-flex, grid, inline-grid, none, contents, flow-root;
+
+@each $value in $displays {
+  .d-#{$value} {
+    display: $value;
+  }
+}
+
+$positions: static, relative, absolute, fixed, sticky;
+$position-values: 0, auto;
+
+@each $pos in $positions {
+  .pos-#{$pos} {
+    position: $pos;
+  }
+}
+
+$edges: top, right, bottom, left;
+
+@each $edge in $edges {
+  @each $value in $position-values {
+    .#{$edge}-#{$value} {
+      #{$edge}: #{$value};
+    }
+  }
+}
+
 /* -------------------------------------------------------- */
 /* 🏞️ GALERIA                                               */
 /* -------------------------------------------------------- */
